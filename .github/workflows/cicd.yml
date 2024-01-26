@@ -1,13 +1,15 @@
 #.github/workflows/cicd.yml
-name:CICD
-on:[push]#run this action in every push
+name: CICD
+on: [push] #run this action in every push
 jobs:
-  cheek:
-    rums-on: ubuntu-latest
-    steps:
+  cheek: 
+    runs-on: ubuntu-latest
+    steps: 
       - name: Checkout Source Code
         uses: actions/checkout@v3
       - name: Install and Run Check Script
-        rum : |
-         yarn install
-         yarn prettier --check ./source
+        run: |
+          yarn install
+          yarn prettier --check ./source
+    
+   
