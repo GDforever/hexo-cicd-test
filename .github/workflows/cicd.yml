@@ -1,8 +1,10 @@
 #.github/workflows/cicd.yml
 name: CICD
 on: [push] #run this action in every push
+permissions: 
+  contents: write
 jobs:
-  cheek: 
+  cheek-and-deploy: 
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout Source Code
@@ -11,5 +13,11 @@ jobs:
         run: |
           yarn install
           yarn prettier --check ./source
+      - name: Build
+        run: yarn build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with: 
+          folder: public
     
    
